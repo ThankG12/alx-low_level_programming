@@ -1,24 +1,27 @@
-#include "main.h"
-/**
- * leet - encode into 1337speak
- * @n: input value
- * Return: n value
- */
-char *leet(char *n)
-{
-        int i, j;
-        char s1[] = "aAeEoOtTlL";
-        char s2[] = "4433007711";
+#include <main.h>
+#include <stdlib.h>
+#include <string.h>
 
-        for (i = 0; n[i] != '\0'; i++)
-        { 
-               for (j = 0; j < 10; j++)
-                      
-                       if (n[i] == s1[j])
-                       {
-                               n[i] = s2[j];
-                       }
-               }
+char* leet(char* input) {
+    char* encoded = malloc(strlen(input) + 1);  // Allocate memory for the encoded string
+    strcpy(encoded, input);  // Copy the input string to the encoded string
+    
+    char replacements[5][2] = {
+        {'a', '4'},
+        {'e', '3'},
+        {'o', '0'},
+        {'t', '7'},
+        {'l', '1'}
+    };
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; encoded[j] != '\0'; j++) {
+            if (encoded[j] == replacements[i][0] || encoded[j] == replacements[i][0] - 'a' + 'A') {
+                encoded[j] = replacements[i][1];
+            }
         }
-        return  (n);
+    }
+
+    return encoded;
 }
+
