@@ -1,25 +1,18 @@
-#include <main.h>
+#include "main.h"
+#include <stdio.h>
 
-char* leet(char* input) {
-    char replacements[5][2] = {
-        {'a', '4'},
-        {'e', '3'},
-        {'o', '0'},
-        {'t', '7'},
-        {'l', '1'}
-    };
+/**
+ * main - check the code for
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char s[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\n";
+    char *p;
 
-    for (int i = 0; i < 5; i++) {
-        char lower = replacements[i][0];
-        char upper = lower - 'a' + 'A';
-        char replace = replacements[i][1];
-
-        for (int j = 0; input[j] != '\0'; j++) {
-            if (input[j] == lower || input[j] == upper) {
-                input[j] = replace;
-            }
-        }
-    }
-
-    return input;
+    p = leet(s);
+    printf("%s", p);
+    printf("%s", s);
+    return (0);
 }
